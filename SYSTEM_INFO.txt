@@ -1,0 +1,94 @@
+╔════════════════════════════════════════════════════════════════╗
+║   AI-DRIVEN HEALTHCARE ANOMALY DETECTION SYSTEM - RUNNING     ║
+╚════════════════════════════════════════════════════════════════╝
+
+🎯 SYSTEM STATUS: FULLY OPERATIONAL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📡 BACKEND API SERVER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Status:     ✓ RUNNING
+URL:        http://localhost:5000
+Database:   SQLite (healthcare.db)
+ML Model:   Isolation Forest (Trained)
+
+API Endpoints:
+  • GET /api/stats              - System statistics
+  • GET /api/vitals             - Patient vital signs
+  • GET /api/anomalies          - Detected anomalies
+  • GET /api/patients           - List of patients
+  • GET /api/patient/<id>/latest - Latest patient data
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 FRONTEND DASHBOARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Status:     ✓ RUNNING
+URL:        http://localhost:8080
+
+Pages:
+  • http://localhost:8080/index.html      - Home page
+  • http://localhost:8080/dashboard.html  - Main dashboard
+
+Features:
+  ✓ Real-time statistics display
+  ✓ Anomaly severity charts
+  ✓ Patient vital signs table
+  ✓ Auto-refresh every 10 seconds
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄 DATA PROCESSING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Producer:   ✓ ACTIVE (Generating data every 5 seconds)
+Consumer:   ✓ ACTIVE (Processing with ML detection)
+Patients:   10 (P001 - P010)
+
+Monitored Vitals:
+  • Heart Rate (BPM)
+  • Oxygen Saturation (SpO₂ %)
+  • Body Temperature (°C)
+  • Blood Pressure (Systolic/Diastolic mmHg)
+
+Severity Levels:
+  🟢 LOW     - Anomaly score < 0.3
+  🟡 MEDIUM  - Anomaly score 0.3 - 0.6
+  🔴 HIGH    - Anomaly score > 0.6
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🤖 MACHINE LEARNING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Algorithm:  Isolation Forest
+Status:     Trained & Active
+Features:   5 (HR, SpO2, Temp, BP Systolic, BP Diastolic)
+Training:   1000 synthetic samples
+Detection:  Real-time anomaly scoring
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 KEY FILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Backend:
+  • backend/app_simple.py          - Flask API server
+  • backend/simple_producer.py     - Data generator
+  • backend/simple_consumer.py     - ML processor
+  • backend/ml_models_simple.py    - Anomaly detection
+  • backend/config_simple.py       - Configuration
+  • backend/models.py              - Database models
+  • backend/healthcare.db          - SQLite database
+
+Frontend:
+  • frontend/index.html            - Landing page
+  • frontend/dashboard.html        - Main dashboard
+  • frontend/css/style.css         - Styling
+  • frontend/js/dashboard.js       - Dashboard logic
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 QUICK ACCESS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 OPEN DASHBOARD: http://localhost:8080/dashboard.html
+
+Test API:
+  curl http://localhost:5000/api/stats
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+System is monitoring patients and detecting anomalies in real-time!

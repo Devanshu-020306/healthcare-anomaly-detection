@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Healthcare Anomaly Detection</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Advanced Analytics Dashboard</h1>
+            <div class="header-actions">
+                <a href="dashboard.html" class="btn-secondary">← Back to Dashboard</a>
+                <a href="index.html" class="btn-secondary">Home</a>
+            </div>
+        </header>
+        
+        <!-- System Overview -->
+        <section class="analytics-section">
+            <h2>🏥 System Overview (Last 24 Hours)</h2>
+            <div class="stats-grid" id="systemStats">
+                <div class="stat-card">
+                    <h3>Total Patients</h3>
+                    <p class="stat-value" id="totalPatients">-</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Readings</h3>
+                    <p class="stat-value" id="totalReadings">-</p>
+                </div>
+                <div class="stat-card alert-medium">
+                    <h3>Anomaly Rate</h3>
+                    <p class="stat-value" id="systemAnomalyRate">-</p>
+                </div>
+                <div class="stat-card alert-high">
+                    <h3>High Risk Patients</h3>
+                    <p class="stat-value" id="highRiskPatients">-</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Hourly Trends -->
+        <section class="analytics-section">
+            <h2>📈 Hourly Trends</h2>
+            <div class="chart-container">
+                <canvas id="hourlyChart"></canvas>
+            </div>
+        </section>
+        
+        <!-- Patient Analytics -->
+        <section class="analytics-section">
+            <h2>👤 Patient Deep Dive</h2>
+            <div class="controls">
+                <label for="analyticsPatientSelect">Select Patient:</label>
+                <select id="analyticsPatientSelect" onchange="loadPatientAnalytics()">
+                    <option value="">-- Select Patient --</option>
+                </select>
+            </div>
+            
+            <div id="patientAnalytics" class="hidden">
+                <div class="patient-header">
+                    <h3 id="patientName">-</h3>
+                    <span id="riskBadge" class="risk-badge">-</span>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Anomaly Rate</h4>
+                        <p class="stat-value" id="patientAnomalyRate">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total Readings</h4>
+                        <p class="stat-value" id="patientReadings">-</p>
+                    </div>
+                    <div class="stat-card alert-high">
+                        <h4>Risk Prediction</h4>
+                        <p class="stat-value" id="riskPrediction">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Anomalies</h4>
+                        <p class="stat-value" id="patientAnomalies">-</p>
+                    </div>
+                </div>
+                
+                <div class="vitals-stats">
+                    <h4>📊 Vital Signs Statistics (24h)</h4>
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>Vital Sign</th>
+                                <th>Average</th>
+                                <th>Min</th>
+                                <th>Max</th>
+                                <th>Std Dev</th>
+                                <th>Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vitalsStatsBody">
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="recommendations-box">
+                    <h4>🩺 AI Recommendations</h4>
+                    <ul id="aiRecommendations"></ul>
+                </div>
+                
+                <div class="chart-container">
+                    <h4>📈 Vital Signs Trends</h4>
+                    <canvas id="patientTrendsChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Doctor Notes -->
+        <section class="analytics-section">
+            <h2>📝 Clinical Notes</h2>
+            <button onclick="toggleNotesForm()" class="btn-primary">➕ Add Note</button>
+            
+            <div id="notesForm" class="notes-form hidden">
+                <form onsubmit="submitNote(event)">
+                    <div class="form-group">
+                        <label>Patient:</label>
+                        <select id="notePatientId" required>
+                            <option value="">-- Select Patient --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Doctor Name:</label>
+                        <input type="text" id="doctorName" placeholder="Dr. Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Note Type:</label>
+                        <select id="noteType">
+                            <option value="OBSERVATION">Observation</option>
+                            <option value="DIAGNOSIS">Diagnosis</option>
+                            <option value="TREATMENT">Treatment</option>
+                            <option value="FOLLOW_UP">Follow-up</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Note:</label>
+                        <textarea id="noteText" rows="4" placeholder="Enter clinical note..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Save Note</button>
+                    <button type="button" onclick="toggleNotesForm()" class="btn-secondary">Cancel</button>
+                </form>
+            </div>
+            
+            <div id="notesList" class="notes-list"></div>
+        </section>
+    </div>
+    
+    <script src="js/analytics.js"></script>
+</body>
+</html>

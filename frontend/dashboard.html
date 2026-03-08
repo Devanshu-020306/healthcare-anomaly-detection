@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Healthcare Anomaly Detection</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 Patient Monitoring Dashboard</h1>
+            <div class="header-actions">
+                <button onclick="toggleDarkMode()" class="btn-secondary" id="darkModeBtn">🌙 Dark Mode</button>
+                <button onclick="toggleNotifications()" class="btn-notification">
+                    🔔 Notifications <span id="notificationBadge" class="badge">0</span>
+                </button>
+                <button onclick="toggleManualEntry()" class="btn-primary">➕ Add Patient Data</button>
+                <a href="analytics.html" class="btn-primary">📊 Analytics</a>
+                <a href="emergency.html" class="btn-primary" style="background: #dc3545;">🚨 Emergency</a>
+                <a href="index.html" class="btn-secondary">← Home</a>
+            </div>
+        </header>
+        
+        <!-- Notification Panel -->
+        <div id="notificationPanel" class="notification-panel hidden">
+            <div class="panel-header">
+                <h3>🔔 Notifications</h3>
+                <button onclick="markAllAsRead()" class="btn-small">Mark All Read</button>
+                <button onclick="toggleNotifications()" class="btn-close">✕</button>
+            </div>
+            <div id="notificationList" class="notification-list">
+                <p class="no-notifications">No notifications</p>
+            </div>
+        </div>
+        
+        <!-- Manual Entry Form -->
+        <div id="manualEntryForm" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>➕ Add Patient Vitals Manually</h2>
+                    <button onclick="toggleManualEntry()" class="btn-close">✕</button>
+                </div>
+                <form id="vitalsForm" onsubmit="submitVitals(event)">
+                    <div class="form-group">
+                        <label for="patientId">Patient ID:</label>
+                        <input type="text" id="patientId" placeholder="e.g., P001" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="heartRate">Heart Rate (BPM):</label>
+                            <input type="number" id="heartRate" step="0.1" min="30" max="200" placeholder="60-100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="spo2">SpO₂ (%):</label>
+                            <input type="number" id="spo2" step="0.1" min="70" max="100" placeholder="95-100" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="temperature">Temperature (°C):</label>
+                            <input type="number" id="temperature" step="0.1" min="34" max="42" placeholder="36.5-37.5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bpSystolic">BP Systolic (mmHg):</label>
+                            <input type="number" id="bpSystolic" step="0.1" min="70" max="220" placeholder="110-140" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bpDiastolic">BP Diastolic (mmHg):</label>
+                            <input type="number" id="bpDiastolic" step="0.1" min="40" max="140" placeholder="70-90" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Submit & Analyze</button>
+                        <button type="button" onclick="toggleManualEntry()" class="btn-secondary">Cancel</button>
+                    </div>
+                </form>
+                <div id="formResult" class="form-result hidden"></div>
+            </div>
+        </div>
+        
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <h3>Total Records</h3>
+                <p class="stat-value" id="totalRecords">-</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Anomalies</h3>
+                <p class="stat-value" id="totalAnomalies">-</p>
+            </div>
+            <div class="stat-card">
+                <h3>Anomaly Rate</h3>
+                <p class="stat-value" id="anomalyRate">-</p>
+            </div>
+            <div class="stat-card alert-high">
+                <h3>High Severity</h3>
+                <p class="stat-value" id="highSeverity">-</p>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <label for="patientSelect">Select Patient:</label>
+            <select id="patientSelect">
+                <option value="">All Patients</option>
+            </select>
+            <button onclick="refreshData()" class="btn-primary">🔄 Refresh</button>
+            <button onclick="downloadReport()" class="btn-primary">📄 Download Report</button>
+            <button onclick="exportCSV()" class="btn-primary">📊 Export CSV</button>
+        </div>
+        
+        <div class="chart-container">
+            <h2>Recent Anomalies</h2>
+            <canvas id="anomalyChart"></canvas>
+        </div>
+        
+        <div class="table-container">
+            <h2>Latest Anomalies</h2>
+            <table id="anomalyTable">
+                <thead>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Timestamp</th>
+                        <th>Heart Rate</th>
+                        <th>SpO₂</th>
+                        <th>Temperature</th>
+                        <th>BP</th>
+                        <th>Severity</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="anomalyTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
