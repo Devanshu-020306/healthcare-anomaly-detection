@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://healthcare-anomaly-detection-5.onrender.com/api';
 let anomalyChart = null;
 
 // Toggle Manual Entry Form
