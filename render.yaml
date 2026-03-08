@@ -5,9 +5,8 @@ services:
     region: oregon
     plan: free
     branch: main
-    rootDir: backend
-    buildCommand: pip install -r requirements_simple.txt
-    startCommand: python app_simple.py
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd backend && python app_simple.py
     envVars:
       - key: PORT
         value: 5000
