@@ -33,7 +33,7 @@ Real-time patient monitoring system using ML-powered anomaly detection with inte
 
 ```bash
 # Clone repository
-git clone https://github.com/YOUR_USERNAME/healthcare-anomaly-detection.git
+git clone https://github.com/Devanshu-020306/healthcare-anomaly-detection.git
 cd healthcare-anomaly-detection
 
 # Install dependencies
@@ -224,9 +224,9 @@ MIT License - feel free to use for educational purposes
 
 ## 👨‍💻 Author
 
-[Your Name]
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+**Devanshu**
+- GitHub: [@Devanshu-020306](https://github.com/Devanshu-020306)
+- Project: Healthcare Anomaly Detection System
 
 ## 🙏 Acknowledgments
 
@@ -238,8 +238,8 @@ MIT License - feel free to use for educational purposes
 ## 📞 Support
 
 For issues or questions:
-- Open an issue on GitHub
-- Email: your.email@example.com
+- Open an issue on GitHub: https://github.com/Devanshu-020306/healthcare-anomaly-detection/issues
+- GitHub Profile: https://github.com/Devanshu-020306
 
 ---
 

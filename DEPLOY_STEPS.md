@@ -13,7 +13,7 @@ git add .
 git commit -m "Healthcare Anomaly Detection System - Ready for deployment"
 
 # Create GitHub repo and push
-git remote add origin https://github.com/YOUR_USERNAME/healthcare-anomaly-detection.git
+git remote add origin https://github.com/Devanshu-020306/healthcare-anomaly-detection.git
 git branch -M main
 git push -u origin main
 ```
